@@ -27,8 +27,11 @@ servers:
 
 paths:
   #Authorization
-  /GetToken:
+  /api/v1//GetToken:
     $ref: paths/Authentication/api@RequestAuthentication@V1.yaml
+  /api/v1/GetTokenByAppCode:
+    $ref: paths/Authentication/api@TokenAppcodeRequestAuthentication@V1.yaml     
+
   
   
 
