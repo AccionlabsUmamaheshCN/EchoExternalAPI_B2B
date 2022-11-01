@@ -1,33 +1,40 @@
-put:
+post:
   tags:
-    - Lockbox
-  summary: Payee - Update
-  operationId: LockBoxPayeeUpdateProcess
+    - B2B Portal
+     
+  summary: B2B Portal - Wyziwig Form
+  x-internal: true
+  operationId: B2BPORTALWYZIWIGFORM
   parameters:
+   
     - name: x-Authorization
       in: header
+      required: true
       schema:
         type: string
         $ref: ../../components/headers/xAuthorization.yaml
-  description: This endpoint allows the user to update a payee name in a given lockbox. The data is first validated in the ECHO Hub system and is directed to the ECHO Hub internal lockbox endpoint. The request is then sent to the lockbox express library for updating a payee name in a lockbox. Once a payee’s name is updated, the ECHO Hub system will send a success message.  
+    
+  description: |
+   This API enables the B2B portal application to update the user profile information. The B2B portal consumes this endpoint and helps the user to keep the profile information current.  
 
-  
+   When there is a request from a B2B form to update a user profile, the data is passed to ECHO Hub. The ECHO Hub system validates the data, and the request is then sent to the B2B library. Once the profile of the user is updated, ECHO Hub sends a success message.     
+   
    Once the user is authenticated, this endpoint generates an authorization token by using the API key and the Client key. This authorization token is valid for 30 minutes.
-  
+ 
   requestBody:
-    description: This endpoint is used to update a payee name in a given lockbox.
+    description: This endpoint is used to update the user profile information.
     required: true
     content:
       application/json:
-        schema:
-          $ref: ../../components/schemas/LockBox/Request/LockBoxPayeeUpdateProcess.yaml
+        schema: 
+          $ref: ../../components/schemas/B2B/Request/B2BWyziwigForm.yaml
   responses:
     '200':
       description: Success
       content:
         application/json:
           schema:
-            $ref: ../../components/schemas/LockBox/Response/LockBoxPayeeUpdateProcessResponse.yaml
+            $ref: ../../components/schemas/B2B/Response/B2BWyziwigFormResponse.yaml
           examples:
             mapName_001:   
               description: Please scroll the above dropdown list for more response codes          
@@ -37,9 +44,8 @@ put:
                 ReponseCodeDesc: Successful Transaction
                 ResponseTransactionID: Transaction Number
                 TransLog:                  
-                  - ResponseCode: "001"
-                    ResponseCodeDesc: Payee Updated Successfully
-
+                -  TransResponseCode: "001"
+                   TransResponseCodeDesc: Successful Transaction
                     
             mapName_900:   
               description: Please scroll the above dropdown list for more response codes          
@@ -49,9 +55,8 @@ put:
                 ReponseCodeDesc: Transaction Failed
                 ResponseTransactionID: Transaction Number
                 TransError:  
-                -  ErrorCode: "6"
-                   ErrorDesc: Invalid JSON String
-                -  ErrorCode: "1041"
-                   ErrorDesc: Invalid or Missing Payee ID
-                -  ErrorCode: "1000"
-                   ErrorDesc: Invalid or Missing Payee Name  
+                -  ErrorCode: "1006"  
+                   ErrorDesc: Invalid or Missing Payor Session Id
+                -  ErrorCode: "1009"  
+                   ErrorDesc: Invalid or Missing Payor API Form Identifier
+                

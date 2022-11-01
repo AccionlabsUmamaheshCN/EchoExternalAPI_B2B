@@ -1,0 +1,22 @@
+required:
+  - APIFormIdentifierID
+  - DraftNumber
+  - AuthorizationToken
+type: object
+properties:
+ 
+  APIFormIdentifierID: 
+    type: integer
+    description: The APIFormIdentifierID is 27. This is a unique identifier that serves the purpose of identifying a particular request. It helps identify and map the request to the correct endpoint.
+        
+  DraftNumber: 
+    type: string
+    description: This is a unique 9-digit number on the payment. The draft number helps to get the payment details like check amount, check date, and payee name.
+    maxLength: 11
+    minLength: 1
+
+  AuthorizationToken: 
+    type: string
+    description: This is a string of code that is used to authorize a user on the API.
+    maxLength: 200
+    minLength: 1

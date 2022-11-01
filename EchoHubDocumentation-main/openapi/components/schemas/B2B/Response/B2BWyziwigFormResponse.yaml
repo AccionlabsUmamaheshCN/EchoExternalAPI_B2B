@@ -15,13 +15,12 @@ properties:
       TransLog for Payment Response Code 001:
         type: object
         properties:
-          ResponseCode:
+          TransResponseCode:
             type: string
-            description: Response Code Number
-          ResponseCodeDesc:
+            description: Transaction response code number
+          TransResponseCodeDesc:
             type: string
-            description: Payee Updated Successfully
-          
+            description: Successful Transaction
             
   This is the Response for Response Code 900:
     type: object
@@ -40,19 +39,28 @@ properties:
         properties:
           ErrorCode:
             type: string
-            description:  Error Code Number
+            description:  Error code number
           ErrorDesc:
            type: string
-           description: Error Description
-      TransError JSON Validation Failed Code 11003:
-          type: object
-          properties:
-            ErrorCode:
-              type: integer
-              description: "11003"
-            ErrorDesc:
-              type: string
-              description: Payee Doesn't Exist
-      
-          
-          
+           description: Error description
+           
+      TransError JSON Validation Failed Code 1006:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "1006"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Payor Session Id
+            
+      TransError JSON Validation Failed Code 1009:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "1009"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Payor API Form Identifier
+     

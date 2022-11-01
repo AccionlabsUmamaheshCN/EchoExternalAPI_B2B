@@ -15,13 +15,12 @@ properties:
       TransLog for Payment Response Code 001:
         type: object
         properties:
-          ResponseCode:
+          TransResponseCode:
             type: string
-            description: Response Code 001
-          ResponseCodeDesc:
+            description: Transaction response code number
+          TransResponseCodeDesc:
             type: string
-            description: Lockbox Deleted Successfully
-          
+            description: Successful Transaction
             
   This is the Response for Response Code 900:
     type: object
@@ -40,9 +39,27 @@ properties:
         properties:
           ErrorCode:
             type: string
-            description:  Error Code 11001
+            description:  Error code number
           ErrorDesc:
            type: string
-           description: Lockbox Doesn't Exist
-          
+           description: Error description
            
+      TransError JSON Validation Failed Code 1014:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "1014"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Draft Number
+               
+      TransError JSON Validation Failed Code 1059:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "1059"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Authorization Token

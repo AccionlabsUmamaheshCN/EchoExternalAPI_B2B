@@ -15,15 +15,12 @@ properties:
       TransLog for Payment Response Code 001:
         type: object
         properties:
-          LockBoxResponseCode:
+          TransResponseCode:
             type: string
-            description: Lockbox Response Code Number
-          LockBoxResponseCodeDesc:
+            description: Transaction response code number
+          TransResponseCodeDesc:
             type: string
-            description: Lockbox Queue Success
-          BatchTransactionId:
-            type: string
-            description: Transaction Number
+            description: Successful Transaction
             
   This is the Response for Response Code 900:
     type: object
@@ -42,8 +39,28 @@ properties:
         properties:
           ErrorCode:
             type: string
-            description:  Error Code Number
+            description:  Error code number
           ErrorDesc:
            type: string
-           description: Error Description
-          
+           description: Error description
+      
+      TransError JSON Validation Failed Code 1059:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "1059"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Authorization Token
+           
+      TransError JSON Validation Failed Code 176:
+        type: object
+        properties:
+          ErrorCode:
+            type: integer
+            description: "176"
+          ErrorDesc:
+            type: string
+            description: Invalid or Missing Email Address
+ 
